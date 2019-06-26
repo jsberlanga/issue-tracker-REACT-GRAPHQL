@@ -8,6 +8,7 @@ const StyledNav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  margin-bottom: 3rem;
 
   .navbar__logo {
     font-size: 2.8rem;
@@ -15,10 +16,10 @@ const StyledNav = styled.nav`
 
   .navbar__links {
     display: flex;
-    li {
+    li a {
       padding: 0 3rem;
     }
-    li:hover {
+    li a:hover {
       font-weight: bold;
       transform: scale(1.05);
     }

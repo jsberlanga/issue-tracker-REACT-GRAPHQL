@@ -2,7 +2,6 @@ const createIssue = async (parent, args, context, info) => {
   return await context.prisma.createIssue({
     title: args.title,
     description: args.description
-    // status: args.status
   });
 };
 const updateIssue = async (parent, args, context, info) => {
@@ -15,16 +14,12 @@ const updateIssue = async (parent, args, context, info) => {
     }
   });
 };
-// const completeIssue = async (root, args, context) => {
-//   return await context.prisma.updateIssue({
-//     where: { id: args.id },
-//     data: {
-//       status: "COMPLETED"
-//     }
-//   });
-// }
+const deleteIssue = async (root, args, context, info) => {
+  return await context.prisma.deleteIssue({ id: args.id });
+};
 
 module.exports = {
   createIssue,
-  updateIssue
+  updateIssue,
+  deleteIssue
 };

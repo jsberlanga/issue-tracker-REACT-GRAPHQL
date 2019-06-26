@@ -1,13 +1,91 @@
-body {
+:root {
+  --main-light: #f2f6f5;
+  --main-dark: #374553;
+  --grey: #7a8795;
+  --green: #93b5b3;
+  --error: #fa8282;
+}
+*,
+*:before,
+*:after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.7;
+  font-size: 1.8rem;
+  background: var(--main-light);
+  color: var(--main-dark);
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  color: var(--main-dark);
+}
+li {
+  list-style-type: none;
+}
+a,
+button {
+  cursor: pointer;
+}
+p {
+  margin-bottom: 1rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/* Basic form styling */
+.form {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 80rem;
+  padding: 2rem;
+  box-shadow: 1px 1px 14px -7px var(--grey);
+}
+
+.form label {
+  text-align: left;
+}
+
+.form input,
+textarea,
+select {
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--grey);
+}
+
+/* Basic button styling */
+.btn__primary {
+  padding: 1.4rem;
+  background: var(--main-dark);
+  outline: none;
+  border: none;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--main-light);
+  margin: 1rem 0;
+}
+
+.btn__primary:hover {
+  background: var(--grey);
+}
+
+/* Error styling */
+
+.error__message {
+  background: var(--error);
+  color: #fff;
+  font-size: 2.4rem;
+  margin: 2rem;
+  max-width: 80rem;
+  margin: 2rem auto;
 }

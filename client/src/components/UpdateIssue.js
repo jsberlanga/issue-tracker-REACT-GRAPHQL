@@ -68,12 +68,9 @@ const UpdateIssue = props => {
     props.history.push("/issues");
   };
 
-  console.log(state);
-
   return (
     <div>
-      <h1>UPDATE ROUTE</h1>
-      {error}
+      <div className="error__message">{error}</div>
       <Query
         query={SINGLE_ISSUE_QUERY}
         variables={{ id: props.match.params.id }}
@@ -91,8 +88,12 @@ const UpdateIssue = props => {
                 if (loading) return <div>Fetching</div>;
                 if (error) return <div>Error</div>;
                 return (
-                  <form onSubmit={e => handleUpdate(e, updateIssue, getIssue)}>
-                    <fieldset disabled={loading} aria-busy={loading}>
+                  <div>
+                    <h1>UPDATING ISSUE "{getIssue.title}"</h1>
+                    <form
+                      className="form form__update"
+                      onSubmit={e => handleUpdate(e, updateIssue, getIssue)}
+                    >
                       <label htmlFor="title">
                         Title
                         <input
@@ -126,19 +127,18 @@ const UpdateIssue = props => {
                           ))}
                         </select>
                       </label>
-                      <button type="submit">
-                        Sav{loading ? "ing" : "e"} Changes
+                      <button className="btn__primary" type="submit">
+                        Save Changes
                       </button>
-                    </fieldset>
-                  </form>
+                    </form>
+                  </div>
                 );
               }}
             </Mutation>
           );
         }}
       </Query>
-
-      <Link to="/issues">Go back to all issues</Link>
+      <Link to="/issues">Go back to the issues page</Link>
     </div>
   );
 };

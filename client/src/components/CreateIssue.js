@@ -49,18 +49,22 @@ const CreateIssue = props => {
 
   return (
     <div>
-      <p>{error}</p>
+      <div className="error__message">{error}</div>
       <Mutation
         mutation={CREATE_ISSUE_MUTATION}
         variables={{ title, description, status }}
       >
         {(createIssue, { loading, error }) => {
           if (loading) return <div>Fetching</div>;
-          if (error) return <div>Error</div>;
+          if (error)
+            return <div className="error__message">{error.message}</div>;
           return (
-            <>
+            <div>
               <h1>CREATE A NEW ISSUE</h1>
-              <form onSubmit={e => handleSubmit(e, createIssue)}>
+              <form
+                className="form form__create"
+                onSubmit={e => handleSubmit(e, createIssue)}
+              >
                 <label htmlFor="Title">
                   Title
                   <input
@@ -73,7 +77,7 @@ const CreateIssue = props => {
                 </label>
                 <label htmlFor="Description">
                   Description
-                  <input
+                  <textarea
                     value={description}
                     onChange={handleChange}
                     type="text"
@@ -91,9 +95,9 @@ const CreateIssue = props => {
                     ))}
                   </select>
                 </label>
-                <button>Create</button>
+                <button className="btn__primary">Create</button>
               </form>
-            </>
+            </div>
           );
         }}
       </Mutation>

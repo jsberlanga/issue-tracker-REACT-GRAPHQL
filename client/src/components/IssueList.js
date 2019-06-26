@@ -1,8 +1,15 @@
 import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import styled from "styled-components";
 
 import Issue from "./Issue";
+
+const StyledList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+`;
 
 const GET_ISSUES_QUERY = gql`
   query GET_ISSUES_QUERY {
@@ -19,18 +26,20 @@ const GET_ISSUES_QUERY = gql`
 const IssueList = props => {
   console.log(props);
   return (
-    <Query query={GET_ISSUES_QUERY} fetchPolicy="cache-and-network">
-      {({ loading, error, data }) => {
-        if (loading) return <div>Fetching</div>;
-        if (error) return <div>Error</div>;
-        console.log(data.getIssues);
+    <StyledList>
+      <Query query={GET_ISSUES_QUERY} fetchPolicy="cache-and-network">
+        {({ loading, error, data }) => {
+          if (loading) return <div>Fetching...</div>;
+          if (error) return <div>{error}</div>;
 
-        return data.getIssues.map(issue => (
-          <Issue key={issue.id} issue={issue} />
-        ));
-      }}
-    </Query>
+          return data.getIssues.map(issue => (
+            <Issue key={issue.id} issue={issue} />
+          ));
+        }}
+      </Query>
+    </StyledList>
   );
 };
 
 export default IssueList;
+export { GET_ISSUES_QUERY };

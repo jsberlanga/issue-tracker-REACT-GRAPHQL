@@ -19,6 +19,7 @@ type Mutation {
     description: String
     status: Status
   ): Issue!
+  deleteIssue(id: ID!): Issue!
 }
 
 type Issue {
