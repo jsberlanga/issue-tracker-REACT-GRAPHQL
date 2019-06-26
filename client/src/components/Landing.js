@@ -3,7 +3,7 @@ import React from "react";
 const Landing = () => {
   return (
     <div>
-      <h1>Issue Tracker for Schibsted Tech Polska</h1>
+      <h1>Issue Tracker</h1>
       <p>
         created by{" "}
         <a
