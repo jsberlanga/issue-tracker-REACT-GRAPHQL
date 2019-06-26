@@ -16,12 +16,14 @@ const GET_ISSUES_QUERY = gql`
   }
 `;
 
-const IssueList = () => {
+const IssueList = props => {
+  console.log(props);
   return (
-    <Query query={GET_ISSUES_QUERY}>
+    <Query query={GET_ISSUES_QUERY} fetchPolicy="cache-and-network">
       {({ loading, error, data }) => {
         if (loading) return <div>Fetching</div>;
         if (error) return <div>Error</div>;
+        console.log(data.getIssues);
 
         return data.getIssues.map(issue => (
           <Issue key={issue.id} issue={issue} />

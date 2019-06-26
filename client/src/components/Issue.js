@@ -2,6 +2,8 @@ import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
+import { Link } from "react-router-dom";
+
 import { timeDifferenceForDate } from "../utils";
 
 const SINGLE_ISSUE_QUERY = gql`
@@ -16,18 +18,27 @@ const SINGLE_ISSUE_QUERY = gql`
   }
 `;
 
-const Issue = ({ issue }) => {
+const Issue = props => {
+  console.log(props);
   return (
-    <Query query={SINGLE_ISSUE_QUERY} variables={{ id: issue.id }}>
+    <Query query={SINGLE_ISSUE_QUERY} variables={{ id: props.issue.id }}>
       {({ loading, error, data }) => {
         if (loading) return <div>Fetching</div>;
         if (error) return <div>Error</div>;
         return (
           <>
-            <h3>{issue.title}</h3>
-            <p>{issue.description}</p>
-            <p>{issue.status}</p>
-            <p>Created {timeDifferenceForDate(issue.createdAt)}</p>
+            <h3>{props.issue.title}</h3>
+            <p>{props.issue.description}</p>
+            <p>{props.issue.status}</p>
+            <p>Created {timeDifferenceForDate(props.issue.createdAt)}</p>
+            <Link
+              to={{
+                pathname: `/issues/${props.issue.id}`,
+                state: { status: props.issue.status }
+              }}
+            >
+              <button>UPDATE</button>
+            </Link>
           </>
         );
       }}
@@ -36,3 +47,4 @@ const Issue = ({ issue }) => {
 };
 
 export default Issue;
+export { SINGLE_ISSUE_QUERY };

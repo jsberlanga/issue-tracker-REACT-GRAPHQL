@@ -1,5 +1,7 @@
 const getIssues = async (parent, args, context, info) => {
-  return await context.prisma.issues();
+  const issues = await context.prisma.issues();
+
+  return issues.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 };
 
 const getIssue = async (parent, args, context, info) => {

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -16,16 +17,18 @@ const CREATE_ISSUE_MUTATION = gql`
   }
 `;
 
-const CreateIssue = () => {
+const CreateIssue = props => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     status: ""
   });
+  const [error, setError] = useState("");
 
   const { title, description, status } = formData;
 
   const handleChange = e => {
+    setError("");
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -34,14 +37,19 @@ const CreateIssue = () => {
 
   const handleSubmit = async (e, createIssue) => {
     e.preventDefault();
-    const res = await createIssue();
-    console.log(res);
-  };
 
-  console.log(title, description, status);
+    if (!title.length || !description.length || !status) {
+      return setError("Please fill out the form");
+    }
+
+    await createIssue();
+
+    props.history.push("/issues");
+  };
 
   return (
     <div>
+      <p>{error}</p>
       <Mutation
         mutation={CREATE_ISSUE_MUTATION}
         variables={{ title, description, status }}
