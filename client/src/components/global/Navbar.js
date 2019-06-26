@@ -11,7 +11,7 @@ const StyledNav = styled.nav`
   margin-bottom: 3rem;
 
   .navbar__logo {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
   }
 
   .navbar__links {
@@ -30,14 +30,14 @@ const Navbar = () => {
   return (
     <StyledNav>
       <h1 className="navbar__logo">
-        <Link to="/issues">Issue Tracker</Link>
+        <Link to="/">Issue Tracker</Link>
       </h1>
       <ul className="navbar__links">
         <li>
-          <Link to="/create">Create an issue</Link>
+          <Link to="/issues">View issues</Link>
         </li>
         <li>
-          <Link to="/issues">View issues</Link>
+          <Link to="/create">Create an issue</Link>
         </li>
       </ul>
     </StyledNav>

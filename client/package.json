@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "issue-tracker-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,7 +22,7 @@
     "test": "jest --watch",
     "eject": "react-scripts eject",
     "server": "cd.. && cd server && npm run server",
-    "dev": "concurrently \"npm run server\" \"npm start"
+    "app": "concurrently \"npm run server\" \"npm start"
   },
   "eslintConfig": {
     "extends": "react-app"

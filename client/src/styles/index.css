@@ -38,6 +38,16 @@ p {
   margin-bottom: 1rem;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
 /* Basic form styling */
 .form {
   margin: 0 auto;
@@ -57,9 +67,9 @@ textarea,
 select {
   width: 100%;
   font-family: "Roboto", sans-serif;
-  padding: 1rem;
+  padding: 1.4rem;
   margin-bottom: 1rem;
-  border: 1px solid var(--grey);
+  border: 1px solid #eeeeee;
 }
 
 /* Basic button styling */
@@ -69,7 +79,7 @@ select {
   outline: none;
   border: none;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--main-light);
   margin: 1rem 0;
@@ -79,8 +89,7 @@ select {
   background: var(--grey);
 }
 
-/* Error styling */
-
+/* Basic error styling */
 .error__message {
   background: var(--error);
   color: #fff;

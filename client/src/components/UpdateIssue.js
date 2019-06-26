@@ -86,7 +86,8 @@ const UpdateIssue = props => {
       >
         {({ error, loading, data: { getIssue } }) => {
           if (loading) return <div>Fetching</div>;
-          if (error) return <div>Error</div>;
+          if (error)
+            return <div className="error__message">{error.message}</div>;
 
           return (
             <Mutation
@@ -95,7 +96,8 @@ const UpdateIssue = props => {
             >
               {(updateIssue, { loading, error }) => {
                 if (loading) return <div>Fetching</div>;
-                if (error) return <div>Error</div>;
+                if (error)
+                  return <div className="error__message">{error.message}</div>;
                 return (
                   <div>
                     <h1>UPDATING ISSUE "{getIssue.title}"</h1>

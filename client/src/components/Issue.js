@@ -12,7 +12,7 @@ const StyledIssue = styled.div`
   box-shadow: 1px 1px 14px -7px var(--grey);
   padding: 2rem;
   position: relative;
-  min-height: 30rem;
+  min-height: 35rem;
 
   button {
     margin: 1rem;
@@ -51,7 +51,7 @@ const Issue = props => {
     <Query query={SINGLE_ISSUE_QUERY} variables={{ id: props.issue.id }}>
       {({ loading, error, data }) => {
         if (loading) return <div>Fetching...</div>;
-        if (error) return <div>Error</div>;
+        if (error) return <div className="error__message">{error.message}</div>;
         return (
           <StyledIssue>
             <h3 className="issue--title">Title: {props.issue.title}</h3>

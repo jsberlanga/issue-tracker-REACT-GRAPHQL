@@ -30,7 +30,8 @@ const IssueList = props => {
       <Query query={GET_ISSUES_QUERY} fetchPolicy="cache-and-network">
         {({ loading, error, data }) => {
           if (loading) return <div>Fetching...</div>;
-          if (error) return <div>{error}</div>;
+          if (error)
+            return <div className="error__message">{error.message}</div>;
 
           return data.getIssues.map(issue => (
             <Issue key={issue.id} issue={issue} />
