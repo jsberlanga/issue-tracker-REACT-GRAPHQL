@@ -3,11 +3,15 @@ import React, { useState } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
-import { statusOptions } from "../lib/statusOptions";
+import { selectStatus } from "../lib/statusOptions";
 
 const CREATE_ISSUE_MUTATION = gql`
-  mutation CREATE_ISSUE_MUTATION($title: String!, $description: String!) {
-    createIssue(title: $title, description: $description) {
+  mutation CREATE_ISSUE_MUTATION(
+    $title: String!
+    $description: String!
+    $status: Status
+  ) {
+    createIssue(title: $title, description: $description, status: $status) {
       id
       title
       description
@@ -21,7 +25,7 @@ const CreateIssue = props => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    status: ""
+    status: "OPEN"
   });
   const [error, setError] = useState("");
 
@@ -68,6 +72,7 @@ const CreateIssue = props => {
                 <label htmlFor="Title">
                   Title
                   <input
+                    id="title"
                     value={title}
                     onChange={handleChange}
                     type="text"
@@ -78,6 +83,7 @@ const CreateIssue = props => {
                 <label htmlFor="Description">
                   Description
                   <textarea
+                    id="description"
                     value={description}
                     onChange={handleChange}
                     type="text"
@@ -88,7 +94,7 @@ const CreateIssue = props => {
                 <label htmlFor="Status">
                   Status
                   <select name="status" onChange={handleChange}>
-                    {statusOptions.map(status => (
+                    {selectStatus.map(status => (
                       <option key={status} value={status}>
                         {status}
                       </option>
@@ -106,3 +112,4 @@ const CreateIssue = props => {
 };
 
 export default CreateIssue;
+export { CREATE_ISSUE_MUTATION };

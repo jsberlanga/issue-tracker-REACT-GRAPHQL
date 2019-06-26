@@ -47,11 +47,10 @@ const SINGLE_ISSUE_QUERY = gql`
 `;
 
 const Issue = props => {
-  console.log(props);
   return (
     <Query query={SINGLE_ISSUE_QUERY} variables={{ id: props.issue.id }}>
       {({ loading, error, data }) => {
-        if (loading) return <div>Fetching</div>;
+        if (loading) return <div>Fetching...</div>;
         if (error) return <div>Error</div>;
         return (
           <StyledIssue>

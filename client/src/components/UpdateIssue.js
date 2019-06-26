@@ -5,7 +5,7 @@ import { Query, Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
 import { SINGLE_ISSUE_QUERY } from "./Issue";
-import { statusOptions } from "../lib/statusOptions";
+import { selectStatus } from "../lib/statusOptions";
 
 const UPDATE_ISSUE_MUTATION = gql`
   mutation UPDATE_ISSUE_MUTATION(
@@ -43,7 +43,8 @@ const UpdateIssue = props => {
     });
   };
 
-  const handleUpdate = async (e, updateIssue, getIssue) => {
+  const handleUpdate = async (e, updateIssue) => {
+    setError("");
     e.preventDefault();
 
     if (currentStatus === "COMPLETED") {
@@ -56,6 +57,14 @@ const UpdateIssue = props => {
       return setError(
         `The ticket is ${currentStatus}. You cannot change the status back to OPEN.`
       );
+    }
+
+    if (
+      state.status !== "OPEN" &&
+      state.status !== "PENDING" &&
+      state.status !== "COMPLETED"
+    ) {
+      return setError(`Oops. That is an invalid status.`);
     }
 
     await updateIssue({
@@ -118,9 +127,9 @@ const UpdateIssue = props => {
                         />
                       </label>
                       <label htmlFor="Status">
-                        Status:
+                        The current status is {getIssue.status.toLowerCase()}
                         <select name="status" onChange={handleChange}>
-                          {statusOptions.map(status => (
+                          {selectStatus.map(status => (
                             <option key={status} value={status}>
                               {status}
                             </option>

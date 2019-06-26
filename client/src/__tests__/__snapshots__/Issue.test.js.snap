@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Issue /> renders with data 1`] = `
+<h3
+  className="issue--title"
+>
+  Title: 
+  Title for a Fake Issue
+</h3>
+`;
+
+exports[`<Issue /> renders with data 2`] = `
+Array [
+  <p
+    className="issue--description"
+  >
+    Description: 
+    Description for a Fake Issue
+  </p>,
+  <p
+    className="issue--status"
+  >
+    Current status: 
+    <strong>
+      OPEN
+    </strong>
+  </p>,
+  <p
+    className="issue--createdAt"
+  >
+    Created 
+    NaN years ago
+  </p>,
+]
+`;
+
+exports[`<Issue /> renders with data 3`] = `
+Array [
+  <button
+    className="btn__primary"
+    onClick={[Function]}
+  >
+    DELETE
+  </button>,
+  <button
+    className="btn__primary"
+  >
+    UPDATE
+  </button>,
+]
+`;

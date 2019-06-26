@@ -1,3 +1,8 @@
-const statusOptions = ["Choose one option", "OPEN", "PENDING", "COMPLETED"];
+const selectStatus = [
+  "Select the current status",
+  "OPEN",
+  "PENDING",
+  "COMPLETED"
+];
 
-export { statusOptions };
+export { selectStatus };

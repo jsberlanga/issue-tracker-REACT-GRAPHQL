@@ -12,7 +12,7 @@ type Query {
 }
 
 type Mutation {
-  createIssue(title: String!, description: String!): Issue!
+  createIssue(title: String!, description: String!, status: Status): Issue!
   updateIssue(
     id: ID!
     title: String

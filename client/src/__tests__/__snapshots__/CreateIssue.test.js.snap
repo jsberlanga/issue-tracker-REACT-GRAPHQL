@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CreateIssue /> renders and matches snapshot 1`] = `
+<form
+  className="form form__create"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="Title"
+  >
+    Title
+    <input
+      id="title"
+      name="title"
+      onChange={[Function]}
+      placeholder="Enter a title for the issue"
+      type="text"
+      value=""
+    />
+  </label>
+  <label
+    htmlFor="Description"
+  >
+    Description
+    <textarea
+      id="description"
+      name="description"
+      onChange={[Function]}
+      placeholder="Enter a description"
+      type="text"
+      value=""
+    />
+  </label>
+  <label
+    htmlFor="Status"
+  >
+    Status
+    <select
+      name="status"
+      onChange={[Function]}
+    >
+      <option
+        key="Select the current status"
+        value="Select the current status"
+      >
+        Select the current status
+      </option>
+      <option
+        key="OPEN"
+        value="OPEN"
+      >
+        OPEN
+      </option>
+      <option
+        key="PENDING"
+        value="PENDING"
+      >
+        PENDING
+      </option>
+      <option
+        key="COMPLETED"
+        value="COMPLETED"
+      >
+        COMPLETED
+      </option>
+    </select>
+  </label>
+  <button
+    className="btn__primary"
+  >
+    Create
+  </button>
+</form>
+`;

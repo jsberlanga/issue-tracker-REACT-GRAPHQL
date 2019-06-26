@@ -1,7 +1,8 @@
 const createIssue = async (parent, args, context, info) => {
   return await context.prisma.createIssue({
     title: args.title,
-    description: args.description
+    description: args.description,
+    status: args.status
   });
 };
 const updateIssue = async (parent, args, context, info) => {
