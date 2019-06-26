@@ -1,0 +1,13 @@
+enum Status {
+  OPEN
+  PENDING
+  COMPLETED
+}
+
+type Issue {
+  id: ID! @id @unique
+  title: String!
+  description: String!
+  status: Status! @default(value: OPEN)
+  createdAt: DateTime! @createdAt
+}
