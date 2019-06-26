@@ -1,6 +1,6 @@
 <p align="center">
   <a href="#">
-    <img alt="issue-tracker" src="static/images/capture.png" width="500" />
+    <img alt="issue-tracker" src="client/static/images/capture.png" width="500" />
   </a>
 </p>
 <h1 align="center">
