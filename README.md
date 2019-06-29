@@ -6,6 +6,12 @@
 <h1 align="center">
   Issue Tracker
 </h1>
+This is a simple issue tracker app built with MERN stack.
+
+```diff
+Impletemented CRUD Operations.
+```
+
 
 ## Usage
 
